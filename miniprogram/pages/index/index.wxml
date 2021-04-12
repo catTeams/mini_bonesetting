@@ -1,0 +1,119 @@
+<view class="main">
+  <view class="header-search-bar">
+    <label class="header-search-bar__label" bindtap="showInput">
+      <icon class="header-icon-search" type="search" size="14"></icon>
+      <view class="header-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="page-section page-section-spacing swiper">
+    <swiper style="height:700rpx" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+      duration="{{duration}}" circular="{{true}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item ">
+            <image src="{{item}}" style="width:100%"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="proContent">
+    <view class="con_title"><text>——</text>推拿项目<text>——</text></view>
+    <view class="con_main">
+      <view class="con_main_list">
+        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+      <view class="con_main_list">
+        <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
+        </image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+      <view class="con_main_list">
+        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+      <view class="con_main_list">
+        <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
+        </image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+      <view class="con_main_list">
+        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+      <view class="con_main_list">
+        <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
+        </image>
+        <view class="txt">
+          <view class="con_main_listTit">针灸养生</view>
+          <view class="con_main_listDetail">改善人体各个系统的功能</view>
+          <view class="con_main_listPrice">￥160</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="consultingService">
+    <view class="service_tit">预约咨询</view>
+    <view class="service_main">
+      <view class="service_main_list">
+        <view class="service_info">
+          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <view class="service_name">
+            <text>黄医生</text>
+            <text>xdscdcd</text>
+          </view>
+        </view>
+        <view>电话</view>
+      </view>
+      <view class="service_main_list">
+        <view class="service_info">
+          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <view class="service_name">
+            <text>黄医生</text>
+            <text>xdscdcd</text>
+          </view>
+        </view>
+        <view>电话</view>
+      </view>
+      <view class="service_main_list">
+        <view class="service_info">
+          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <view class="service_name">
+            <text>黄医生</text>
+            <text>xdscdcd</text>
+          </view>
+        </view>
+        <view>电话</view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}"
+      bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;">
+    </map>
+  </view>
+  <view>
+    <button type="primary" bindtap="navigate">导航</button>
+  </view>
+</view>
