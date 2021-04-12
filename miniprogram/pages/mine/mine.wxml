@@ -1,0 +1,57 @@
+<!-- <view class="login">
+	<view class="info">
+		<button plain size="mini" open-type="getUserInfo" bindgetuserinfo="_getInfo" wx:if="{{!isLogin}}">登录</button>
+		<text wx:else>欢迎：{{userInfo.nickName}}</text>
+	</view>
+</view> -->
+<view class="main">
+	<view class="bg"></view>
+	<view class="logined">
+		<block wx:if="{{!isLogin}}">
+			<image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"
+				class="userImg" />
+			<button plain size="mini" open-type="getUserInfo" bindgetuserinfo="_getInfo" style="color: white">请点击登录</button>
+		</block>
+		<block wx:else>
+			<image src="{{userInfo.avatarUrl}}" class="userImg" />
+			<text>欢迎：{{userInfo.nickName}}</text>
+		</block>
+	</view>   
+	<view class="box">
+		<view class="smallBox">
+			<mp-cells>
+				<mp-cell link value="所有订单" style="font-size: 26rpx">
+				</mp-cell>
+			</mp-cells>
+			<view class="firstFlex">
+				<view wx:for="{{firstFlexContent}}" wx:key="index">
+					<image src="{{item.src}}"></image>
+					<text>{{item.title}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="smallBox">
+			<mp-cells>
+				<mp-cell link value="最新消息" style="font-size: 26rpx" footer="说明文字">
+				</mp-cell>
+				<mp-cell link value="我的订阅" style="font-size: 26rpx">
+				</mp-cell>
+				<mp-cell link url="../index" style="font-size: 26rpx" value="我的表单">
+				</mp-cell>
+			</mp-cells>
+		</view>
+		<view class="smallBox">
+			<mp-cells>
+				<mp-cell link value="xxx省xxx市xxx县xxx路xxx号" style="font-size: 26rpx" footer="说明文字">
+					<!-- <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image> -->
+				</mp-cell>
+				<mp-cell link value="1300000000" style="font-size: 26rpx">
+				</mp-cell>
+				<mp-cell link value="2021-04-10 14:00:00" style="font-size: 26rpx">
+				</mp-cell>
+				<mp-cell link url="../index" style="font-size: 26rpx" value="正骨">
+				</mp-cell>
+			</mp-cells>
+		</view>
+	</view>
+</view>

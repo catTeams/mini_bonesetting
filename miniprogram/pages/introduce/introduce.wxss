@@ -1,0 +1,75 @@
+/* miniprogram/pages/introduce/introduce.wxss */
+.topImg {
+  width: 100%;
+  height: 350rpx;
+  display: block;
+}
+
+.about {
+  margin-top: 15rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #eee;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.title text {
+  color: #bbb;
+  margin: 15rpx;
+}
+
+.content {
+  padding: 25rpx 20rpx;
+  font-size: 26rpx;
+  text-indent: 2em;
+  color: #aaa;
+}
+
+.history {
+  background: #fff;
+}
+
+.flexBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexBox>view {
+  width: 50%;
+  text-align: center;
+  align-self: center;
+  font-size: 30rpx;
+}
+
+.flexBox image {
+  width: 100%;
+  height: 250rpx;
+  display: block;
+}
+
+.time {
+  color: #bbb;
+  font-size: 26rpx;
+}
+
+.imgTip {
+  padding: 30rpx;
+  background: #fff;
+}
+.imgTip image {
+  width: 100%;
+  display: block;
+  height: 300rpx;
+}
+.imgTip view {
+  line-height: 80rpx;
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  box-shadow: 0rpx 1rpx 10rpx #ccc;
+}

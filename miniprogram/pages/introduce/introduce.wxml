@@ -1,0 +1,40 @@
+<!--miniprogram/pages/introduce/introduce.wxml-->
+<view>
+  <image class="topImg" src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/wx1.jpg"></image>
+  <view class="about">
+    <view class="title"><text>-</text>关于我们<text>-</text></view>
+    <view class="content">自曾祖传百余年，曾祖黄善湧、祖父黄质定、家父黄礼准均为武术与正骨名师。祖父在1960年获得广东省武术锦标赛第五名。定准堂世代传承跌打骨伤正骨疗法，为广大患者解除脊椎、颈椎、腰椎、跌打、骨伤等痛症。家传手法突出体验正骨的无价瑰宝。</view>
+  </view>
+  <view class="history">
+    <view class="title"><text>-</text>定准堂<text>-</text></view>
+    <view class="flexBox">
+      <view>
+        <view>家传第一代</view>
+        <view class="time">1990-1995</view>
+      </view>
+      <view><image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg"></image></view>
+      <view><image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg"></image></view>
+      <view>
+        <view>家传第一代</view>
+        <view class="time">1990-1995</view>
+      </view>
+      <view>
+        <view>家传第一代</view>
+        <view class="time">1990-1995</view>
+      </view>
+      <view><image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg"></image></view>
+    </view>
+  </view>
+  <view class="aboutImg">
+    <view>
+      <mp-cells>
+				<mp-cell link value="门店环境" style="font-size: 26rpx" footer="查看更多">
+				</mp-cell>
+			</mp-cells>
+    </view>
+    <view class="imgTip">
+      <image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg"></image>
+      <view>门店环境</view>
+    </view>
+  </view>
+</view>

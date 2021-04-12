@@ -1,0 +1,121 @@
+<!--miniprogram/pages/appointment/appointment.wxml-->
+<view class="main">
+  <scroll-view scroll-x="true" class="tab-h {{showTop ? 'topFixed' : ''}}" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentIndex==0?'active':''}}" data-current="0" bindtap="swichNav">全部</view>
+    <view class="tab-item {{currentIndex==1?'active':''}}" data-current="1" bindtap="swichNav">艾灸</view>
+    <view class="tab-item {{currentIndex==2?'active':''}}" data-current="2" bindtap="swichNav">针灸</view>
+    <view class="tab-item {{currentIndex==3?'active':''}}" data-current="3" bindtap="swichNav">其他</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab">
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:if="{{list.length > 0}}">
+          <view class="item-ans" wx:for="{{list}}" wx:key="*this">
+            <image src="{{item.imgSrc}}"></image>
+            <view class="flexBox">
+              <view class="left">
+                <view>
+                  <text class="title">{{item.title}}</text>
+                </view>
+                <view class="label">{{item.arr}}</view>
+                <view>
+                  <text class="price">￥{{item.price}}</text>
+                  <text class="hasSum">(已预约:{{item.hasSum}})</text>
+                </view>
+              </view>
+              <view class="right">立即预约</view>
+            </view>
+            <view class="line"></view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="noData">暂无数据</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:if="{{consultationDetailsList.length > 0}}">
+          <view class="item-ans" wx:for="{{consultationDetailsList}}" wx:key="*this">
+            <view class="expertInfo">
+              <view>
+                <view>
+                  <txet class="name">{{item.clientName}}</txet> {{item.phone}}
+                </view>
+              </view>
+              <view class="answerHistory">来访时间：{{item.visitingTime}} </view>
+            </view>
+
+            <div class="item-list">
+              <block wx:if="{{item.tag == '新咨询'}}">
+                <div class="newBookmark">{{item.tag}}</div>
+              </block>
+              <block wx:else>
+                <div class="oldBookmark">{{item.tag}}</div>
+              </block>
+            </div>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="noData">暂无数据</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:if="{{consultationDetailsList.length > 0}}">
+          <view class="item-ans" wx:for="{{consultationDetailsList}}" wx:key="*this">
+            <view class="expertInfo">
+              <view>
+                <view>
+                  <txet class="name">{{item.clientName}}</txet> {{item.phone}}
+                </view>
+              </view>
+              <view class="answerHistory">来访时间：{{item.visitingTime}} </view>
+            </view>
+
+            <div class="item-list">
+              <block wx:if="{{item.tag == '新咨询'}}">
+                <div class="newBookmark">{{item.tag}}</div>
+              </block>
+              <block wx:else>
+                <div class="oldBookmark">{{item.tag}}</div>
+              </block>
+            </div>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="noData">暂无数据</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scoll-h">
+        <block wx:if="{{consultationDetailsList.length > 0}}">
+          <view class="item-ans" wx:for="{{consultationDetailsList}}" wx:key="*this">
+            <view class="expertInfo">
+              <view>
+                <view>
+                  <txet class="name">{{item.clientName}}</txet> {{item.phone}}
+                </view>
+              </view>
+              <view class="answerHistory">来访时间：{{item.visitingTime}} </view>
+            </view>
+
+            <div class="item-list">
+              <block wx:if="{{item.tag == '新咨询'}}">
+                <div class="newBookmark">{{item.tag}}</div>
+              </block>
+              <block wx:else>
+                <div class="oldBookmark">{{item.tag}}</div>
+              </block>
+            </div>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="noData">暂无数据</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
