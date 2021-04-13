@@ -1,1 +1,119 @@
 /* miniprogram/pages/search/search.wxss */
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  background: #fff;
+}
+.header-search-bar {
+  height: 100rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+}
+.header-search-bar view {
+  color: #aaa;
+  font-size: 26rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.header-search-bar__label {
+  flex: 1;
+  display: flex;
+  padding-left: 20rpx;
+  align-items: center;
+  /* justify-content: center; */
+  height: 80rpx;
+  background: #f2f2f2;
+  margin: 0 20rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  color: #9a9a9a;
+}
+input {
+  font-size: 26rpx;
+  width: 100%;
+}
+.searchBottom {
+  margin-top: 80rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+}
+.searchTitle {
+  color: #aaa;
+  font-size: 30rpx;
+}
+.searchFlex {
+  display: flex;
+}
+.searchFlex view {
+  padding: 10rpx 30rpx;
+  background: #eee;
+  border-radius: 50rpx;
+  color: #333;
+  margin: 10rpx;
+}
+.listData {
+  margin-top: 80rpx;
+}
+.item-ans {
+  padding: 30rpx;
+  padding-bottom: 0;
+}
+
+.item-ans image {
+  width: 100%;
+  height: 350rpx;
+}
+
+.flexBox {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: red;
+  margin-right: 10rpx;
+}
+
+.label {
+  color: #bbb;
+  font-size: 26rpx;
+}
+
+.right {
+  padding: 10rpx 20rpx;
+  background: #333;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+.hasSum {
+  font-size: 24rpx;
+}
+
+.line {
+  width: 100%;
+  background: #eee;
+  height: 2rpx;
+  margin-top: 20rpx;
+}
+.scoll-h{
+  padding-bottom: 30rpx;
+}

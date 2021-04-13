@@ -1,0 +1,88 @@
+/* miniprogram/pages/order/order.wxss */
+.top {
+  padding: 20rpx;
+  background: #fff;
+  display: flex;
+  font-size: 26rpx;
+}
+.img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 30rpx;
+}
+.img image {
+  width: 150rpx;
+  height: 150rpx;
+}
+.flex1 {
+  flex: 1;
+}
+.leftFlex {
+  display: flex;
+  justify-content: space-between;
+}
+ .leftFlex image {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 10rpx;
+ } 
+.num-jian,
+.input-num,
+.num-jia {
+    display: inline-block;
+    width: 56rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    font-size: 36rpx;
+    color: #999;
+    cursor: pointer;
+    border: 2rpx solid #e6e6e6;
+}
+.input-num {
+    width: 116rpx;
+    color: #333;
+    border-left: 0;
+    border-right: 0;
+}
+.info {
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+}
+.info text {
+  color: red;
+  margin-right: 10rpx;
+}
+.info input {
+  border-bottom: 2rpx solid #eee;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.footer {
+  display: flex;
+  padding: 20rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  font-size: 28rpx;
+}
+.footer view {
+  width: 250rpx;
+}
+.right {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  flex: 1;
+}

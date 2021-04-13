@@ -10,7 +10,7 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h">
         <block wx:if="{{list.length > 0}}">
-          <view class="item-ans" wx:for="{{list}}" wx:key="*this">
+          <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo">
             <image src="{{item.imgSrc}}"></image>
             <view class="flexBox">
               <view class="left">

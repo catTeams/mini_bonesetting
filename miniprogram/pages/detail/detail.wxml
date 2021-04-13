@@ -1,0 +1,38 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<view>
+  <view class="item-ans">
+    <image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg"></image>
+    <view class="flexBox">
+      <view class="left">
+        <view>
+          <text class="title">很放得开</text>
+        </view>
+        <view class="label">范围为、分为非违法</view>
+        <view>
+          <text class="price">￥399</text>
+          <text class="hasSum">(已预约:2)</text>
+        </view>
+      </view>
+      <mp-icon icon="share" color="#aaa" size="{{25}}"></mp-icon>
+    </view>
+  </view>
+  <view class="content">
+    <view class="con_title">
+      <text>服务详情</text>
+    </view>
+    <view class="con_center">
+      “足浴”即用热水泡脚。祖国医学的经络理论认为，五脏六腑自足三阴经（脾、肝、肾）始，踝部以下有66个穴位。在中医看来，热水泡脚如同用艾条灸这些穴位一样，有推动血运、温煦脏腑、健身防病的养生功效。
+    </view>
+  </view>
+  <view class="footer">
+    <view class="flex">
+      <icon class="iconfont icon-weixin"></icon>
+      <text>微信</text>
+    </view>
+    <view class="flex">
+      <icon class="iconfont icon-dianhua"></icon>
+      <text>电话</text>
+    </view>
+    <view class="right" bindtap="navigatorTo">立即预约</view>
+  </view>
+</view>

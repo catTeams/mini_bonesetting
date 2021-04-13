@@ -1,1 +1,39 @@
 <!--miniprogram/pages/search/search.wxml-->
+<view class="main">
+  <view class="header-search-bar">
+    <label class="header-search-bar__label" bindtap="showInput">
+      <icon class="header-icon-search" type="search" size="14"></icon>
+      <input type="text" placeholder="搜索" auto-focus />
+    </label>
+    <view bindtap="navigatorTo" data-type="-1">取消</view>
+  </view>
+  <view class="listData">
+    <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo">
+      <image src="{{item.imgSrc}}"></image>
+      <view class="flexBox">
+        <view class="left">
+          <view>
+            <text class="title">{{item.title}}</text>
+          </view>
+          <view class="label">{{item.arr}}</view>
+          <view>
+            <text class="price">￥{{item.price}}</text>
+            <text class="hasSum">(已预约:{{item.hasSum}})</text>
+          </view>
+        </view>
+        <view class="right">立即预约</view>
+      </view>
+      <view class="line"></view>
+    </view>
+  </view>
+  <view class="searchBottom">
+    <view class="searchTitle">推荐搜索</view>
+    <view class="searchFlex">
+      <view>骨折</view>
+      <view>脱臼</view>
+      <view>脊椎</view>
+      <view>胸椎</view>
+      <view>骶椎</view>
+    </view>
+  </view>
+</view>

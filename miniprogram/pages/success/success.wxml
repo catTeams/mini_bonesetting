@@ -1,0 +1,8 @@
+<!--miniprogram/pages/success/success.wxml-->
+<view class="main">
+  <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/success1.png"></image>
+  <view class="button">
+    <view class="order">查看订单</view>
+    <view class="index">返回首页</view>
+  </view>
+</view>

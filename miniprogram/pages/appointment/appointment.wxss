@@ -59,6 +59,7 @@ swiper-item {
 
 .item-ans {
   padding: 30rpx;
+  padding-bottom: 0;
 }
 
 .item-ans image {
@@ -110,5 +111,7 @@ swiper-item {
   height: 2rpx;
   margin-top: 20rpx;
 }
-
+.scoll-h{
+  padding-bottom: 30rpx;
+}
 /* 滑动tab */

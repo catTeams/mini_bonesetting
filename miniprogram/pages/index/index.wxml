@@ -2,7 +2,7 @@
   <view class="header-search-bar">
     <label class="header-search-bar__label" bindtap="showInput">
       <icon class="header-icon-search" type="search" size="14"></icon>
-      <view class="header-search-bar__text">搜索</view>
+      <view class="header-search-bar__text" style="font-size: 26rpx;">搜索</view>
     </label>
   </view>
   <view class="page-section page-section-spacing swiper">

@@ -4,7 +4,10 @@
     "pages/mine/mine",
     "pages/appointment/appointment",
     "pages/introduce/introduce",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/order/order",
+    "pages/success/success"
   ],
   "window": {
     "backgroundColor": "#fff",
@@ -16,23 +19,32 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "tabBar": {
-    "selectedColor": "#027B61",
+    "color": "#bfbfbf",
+    "selectedColor": "#515151",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "./static/images/home1.png",
+        "selectedIconPath": "./static/images/home2.png"
       },
       {
         "pagePath": "pages/introduce/introduce",
-        "text": "品牌介绍"
+        "text": "品牌介绍",
+        "iconPath": "./static/images/intro1.png",
+        "selectedIconPath": "./static/images/intro2.png"
       },
       {
         "pagePath": "pages/appointment/appointment",
-        "text": "预约"
+        "text": "预约",
+        "iconPath": "./static/images/time1.png",
+        "selectedIconPath": "./static/images/time2.png"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "./static/images/mine1.png",
+        "selectedIconPath": "./static/images/mine2.png"
       }
     ]
   },
@@ -41,9 +53,7 @@
   },
   "permission": {
     "scope.userLocation": {
-
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
-      
-      }
+    }
   }
 }

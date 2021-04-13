@@ -36,7 +36,11 @@ Page({
       hasSum: 2,
     }]
   },
-
+  navigatorTo(){
+    wx.navigateTo({
+      url: '../detail/detail',
+    })
+  },
    // 滚动切换标签样式
    switchTab: function (e) {
     this.setData({
