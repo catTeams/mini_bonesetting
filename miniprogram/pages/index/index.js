@@ -18,6 +18,11 @@ Page({
     latitude: '',
     longitude: '',
   },
+  showInput(){
+    wx.navigateTo({
+      url: '../search/search',
+    })
+  },
   navigate() {
     ////使用微信内置地图查看标记点位置，并进行导航
     wx.openLocation({
