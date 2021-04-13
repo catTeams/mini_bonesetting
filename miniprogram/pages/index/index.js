@@ -9,10 +9,10 @@ Page({
     markers: [{
       iconPath: "",
       id: 4,
-      latitude: 31.938841,
-      longitude: 118.799698,
-      width: 30,
-      height: 30
+      latitude: 22.70941162109375,
+      longitude: 114.04393768310547,
+      name: '黄义森正骨颈椎腰椎跌打骨伤',
+      address: '广东省深圳市龙华区江围路宝志国商业楼I5号',
     }],
     //当前定位位置
     latitude: '',
@@ -23,19 +23,54 @@ Page({
     wx.openLocation({
       latitude: this.data.markers[0].latitude, //要去的纬度-地址
       longitude: this.data.markers[0].longitude, //要去的经度-地址
+      name: this.data.markers[0].name,
+      address: this.data.markers[0].address,
     })
   },
-  onLoad() {
-    //获取当前位置
+  getLocation(){
+    let _this = this;
     wx.getLocation({
       type: 'gcj02',
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude
+      success: function (location) {
+        _this.setData({
+          latitude: location.latitude,
+          longitude: location.longitude
+        })
+      },
+      fail: function () {
+        wx.hideLoading();
+
+        wx.getSetting({
+          success: function (res) {
+            if (!res.authSetting['scope.userLocation']) {
+              _this.showModal({
+                title: '',
+                content: '请允许****获取您的定位',
+                confirmText: '授权',
+                success: function (res) {
+                  if (res.confirm) {
+
+                    _this.openSetting();
+                  } else {
+                    console.log('get location fail');
+                  }
+                }
+              })
+            } else {
+              //用户已授权，但是获取地理位置失败，提示用户去系统设置中打开定位
+              _this.showModal({
+                title: '',
+                content: '请在系统设置中打开定位服务',
+                confirmText: '确定',
+                success: function (res) {}
+              })
+            }
+          }
         })
       }
     })
+  },
+  onLoad() {
+    this.getLocation()
   }
 })
