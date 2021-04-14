@@ -17,8 +17,38 @@ Page({
     //当前定位位置
     latitude: '',
     longitude: '',
+    showWx: false,
+    oneButton: [{
+      text: '确定'
+    }],
   },
-  showInput(){
+  openWx(e) {
+    this.setData({
+      showWx: true
+    })
+  },
+  closeWx() {
+    this.setData({
+      showWx: false
+    })
+  },
+  // 复制客户编号
+  copyText: function (e) {
+    console.log(e)
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
+    })
+  },
+  showInput() {
     wx.navigateTo({
       url: '../search/search',
     })
@@ -32,7 +62,7 @@ Page({
       address: this.data.markers[0].address,
     })
   },
-  getLocation(){
+  getLocation() {
     let _this = this;
     wx.getLocation({
       type: 'gcj02',
@@ -77,5 +107,13 @@ Page({
   },
   onLoad() {
     this.getLocation()
+  },
+  getPhone(e) {
+    let {
+      phone
+    } = e.currentTarget.dataset
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
   }
 })

@@ -18,7 +18,7 @@
     </swiper>
   </view>
   <view class="proContent">
-    <view class="con_title"><text>——</text>推拿项目<text>——</text></view>
+    <view class="wayTitkle"><text>-</text>推拿项目<text>-</text></view>
     <view class="con_main">
       <view class="con_main_list">
         <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
@@ -81,10 +81,12 @@
           <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
           <view class="service_name">
             <text>黄医生</text>
-            <text>xdscdcd</text>
+            <text>15899692927</text>
           </view>
         </view>
-        <view>电话</view>
+        <view catchtap='getPhone' data-phone="15899692927">
+          <icon class="iconfont icon-dianhua1"></icon>
+        </view>
       </view>
       <view class="service_main_list">
         <view class="service_info">
@@ -94,7 +96,9 @@
             <text>xdscdcd</text>
           </view>
         </view>
-        <view>电话</view>
+        <view catchtap='getPhone' data-phone="13613009313">
+          <icon class="iconfont icon-dianhua1"></icon>
+        </view>
       </view>
       <view class="service_main_list">
         <view class="service_info">
@@ -104,16 +108,60 @@
             <text>xdscdcd</text>
           </view>
         </view>
-        <view>电话</view>
+        <view catchtap='getPhone' data-phone="15899692927">
+          <icon class="iconfont icon-dianhua1"></icon>
+        </view>
       </view>
     </view>
   </view>
-  <view>
+  <view class="mapBox">
     <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}"
       bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;">
     </map>
+    <view bindtap="navigate" class="button">
+      <icon class="iconfont icon-daohang" style="margin-right: 10rpx;"></icon>
+      <text>导航</text>
+    </view>
   </view>
-  <view>
-    <button type="primary" bindtap="navigate">导航</button>
+  <view class="way">
+    <view class="wayTitkle"><text>-</text>到店方式<text>-</text></view>
+    <view class="wayCenter">
+      <view>
+        <view>公交线路：</view>
+        <view class="wayLine">
+          <view class="lineCircle">乘坐公交深莞1，观澜二小站下车，步行5分钟到达终点。</view>
+          <view class="lineCircle">乘坐公交M225，长湖头村站下车，步行7分钟到达终点。</view>
+          <view class="lineCircle">乘坐公交E16，龙华中心医院2站下车，步行10分钟到达终点。</view>
+        </view>
+      </view>
+      <view>
+        <view class="marginTop">地铁线路：</view>
+        <view class="wayLine">
+          <view class="lineCircle">乘地铁4号线长湖站下车，D出口，步行7分钟到达终点。</view>
+        </view>
+      </view>
+    </view>
   </view>
+  <view class="bottom">
+    <view>
+      <icon class="iconfont icon-dianhua"></icon>
+      电话：<text>15899692927</text>
+    </view>
+    <view>
+      <icon class="iconfont icon-dizhi"></icon>
+      地址：<text>广东省深圳市龙华区江围路宝志国商业楼I5号</text>
+    </view>
+  </view>
+  <view class="getPhone get" catchtap='getPhone' data-phone="15899692927">
+    <icon class="iconfont icon-dianhua" style="font-size:35rpx"></icon>
+  </view>
+  <view class="getWx get" catchtap="openWx">
+    <icon class="iconfont icon-weixin" style="font-size:35rpx"></icon>
+  </view>
+  <mp-dialog title="获取微信" show="{{showWx}}" bindbuttontap="closeWx" buttons="{{oneButton}}">
+    <view>
+      <image class="wxImg" src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/20210413175951.jpg"></image>
+    </view>
+    <view bindtap="copyText" data-text="budai_bb">点击复制微信号：budai_bb</view>
+  </mp-dialog>
 </view>

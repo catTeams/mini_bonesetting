@@ -29,9 +29,10 @@
 }
 
 .proContent {
-  padding: 40rpx;
+  padding: 20rpx;
   background: #fff;
   margin: 20rpx 0;
+  padding-top: 0;
 }
 
 .con_title {
@@ -50,11 +51,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  padding-top: 20rpx;
 }
 
 .con_main_list {
   width: 47%;
+  padding: 10rpx 0;
 }
 
 .con_main_list image {
@@ -63,16 +66,18 @@
 }
 
 .con_main_listTit {
-  font-size: 34rpx;
+  font-size: 28rpx;
 }
 
 .con_main_listDetail {
   color: #999;
+  font-size: 24rpx;
 }
 
 .con_main_listPrice {
-  font-size: 28rpx;
+  font-size: 26rpx;
   font-weight: 800;
+  color: red;
 }
 
 .consultingService {
@@ -91,7 +96,8 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20rpx;
-  height: 180rpx;
+  padding-right: 40rpx;
+  height: 150rpx;
   align-items: center;
   border-bottom: 2rpx solid #eee;
 }
@@ -111,4 +117,129 @@
   align-items: flex-start;
   justify-content: center;
   margin-left: 10rpx;
+}
+
+.mapBox {
+  background: #fff;
+  padding: 50rpx;
+  text-align: center;
+  overflow: hidden;
+}
+
+map {
+  width: 100%;
+  height: 300px;
+}
+
+.button {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #3b7ad8;
+  color: #fff;
+  border-radius: 6rpx;
+  margin-top: 20rpx;
+  float: right;
+}
+
+.way {
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  padding-top: 0;
+}
+
+.wayTitkle {
+  line-height: 80rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #eee;
+  font-size: 30rpx;
+}
+
+.wayTitkle text {
+  color: #aaa;
+  margin: 10rpx;
+}
+
+.wayCenter {
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+
+.wayLine {
+  padding-left: 40rpx;
+  font-size: 25rpx;
+  line-height: 40rpx;
+  color: #999;
+}
+
+.marginTop {
+  margin-top: 20rpx;
+}
+
+.lineCircle {
+  position: relative;
+}
+
+.lineCircle::before {
+  content: '';
+  width: 10rpx;
+  height: 10rpx;
+  background: #999;
+  position: absolute;
+  left: -20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bottom {
+  background: #fff;
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.bottom icon {
+  width: 40rpx;
+}
+
+.bottom text {
+  color: #999;
+}
+
+.bottom icon {
+  font-size: 19px;
+  color: #999;
+}
+
+.bottom view {
+  display: flex;
+  align-items: baseline;
+}
+
+.get {
+  width: 70rpx;
+  height: 70rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+  z-index: 999;
+}
+
+.getPhone {
+  position: fixed;
+  bottom: 220rpx;
+  right: 50rpx;
+}
+
+.getWx {
+  position: fixed;
+  bottom: 120rpx;
+  right: 50rpx;
+}
+.wxImg {
+  width: 100%;
+  height: 600rpx;
 }
