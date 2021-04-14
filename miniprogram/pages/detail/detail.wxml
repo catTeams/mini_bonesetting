@@ -13,7 +13,10 @@
           <text class="hasSum">(已预约:2)</text>
         </view>
       </view>
-      <mp-icon icon="share" color="#aaa" size="{{25}}"></mp-icon>
+      <button open-type="share" style="width: 50rpx;" hover-class="none">
+        <mp-icon icon="share" color="#aaa" size="{{25}}"></mp-icon>
+      </button>
+
     </view>
   </view>
   <view class="content">

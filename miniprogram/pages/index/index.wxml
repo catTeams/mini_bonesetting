@@ -20,7 +20,7 @@
   <view class="proContent">
     <view class="wayTitkle"><text>-</text>推拿项目<text>-</text></view>
     <view class="con_main">
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
@@ -28,7 +28,7 @@
           <view class="con_main_listPrice">￥160</view>
         </view>
       </view>
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
         </image>
         <view class="txt">
@@ -37,7 +37,7 @@
           <view class="con_main_listPrice">￥160</view>
         </view>
       </view>
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
@@ -45,7 +45,7 @@
           <view class="con_main_listPrice">￥160</view>
         </view>
       </view>
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
         </image>
         <view class="txt">
@@ -54,7 +54,7 @@
           <view class="con_main_listPrice">￥160</view>
         </view>
       </view>
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
@@ -62,7 +62,7 @@
           <view class="con_main_listPrice">￥160</view>
         </view>
       </view>
-      <view class="con_main_list">
+      <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
         <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg">
         </image>
         <view class="txt">

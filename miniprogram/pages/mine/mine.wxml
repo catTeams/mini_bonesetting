@@ -1,22 +1,18 @@
-<!-- <view class="login">
-	<view class="info">
-		<button plain size="mini" open-type="getUserInfo" bindgetuserinfo="_getInfo" wx:if="{{!isLogin}}">登录</button>
-		<text wx:else>欢迎：{{userInfo.nickName}}</text>
-	</view>
-</view> -->
 <view class="main">
 	<view class="bg"></view>
-	<view class="logined">
-		<block wx:if="{{!isLogin}}">
+	<block wx:if="{{!isLogin}}">
+		<view class="logined" bindtap="_getInfo">
 			<image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"
 				class="userImg" />
-			<button plain size="mini" open-type="getUserInfo" bindgetuserinfo="_getInfo" style="color: white">请点击登录</button>
-		</block>
-		<block wx:else>
+			<view style="color: white">请点击登录</view>
+		</view>
+	</block>
+	<block wx:else>
+		<view class="logined">
 			<image src="{{userInfo.avatarUrl}}" class="userImg" />
 			<text>欢迎：{{userInfo.nickName}}</text>
-		</block>
-	</view>   
+		</view>
+	</block>
 	<view class="box">
 		<view class="smallBox">
 			<mp-cells>

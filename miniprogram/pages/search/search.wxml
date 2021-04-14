@@ -8,7 +8,7 @@
     <view bindtap="navigatorTo" data-type="-1">取消</view>
   </view>
   <view class="listData">
-    <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo">
+    <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo" data-url="../detail/detail">
       <image src="{{item.imgSrc}}"></image>
       <view class="flexBox">
         <view class="left">
@@ -21,7 +21,7 @@
             <text class="hasSum">(已预约:{{item.hasSum}})</text>
           </view>
         </view>
-        <view class="right">立即预约</view>
+        <view class="right" catchtap="navigatorTo" data-url="../order/order" data-type="order">立即预约</view>
       </view>
       <view class="line"></view>
     </view>

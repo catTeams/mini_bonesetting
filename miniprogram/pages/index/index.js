@@ -115,5 +115,11 @@ Page({
     wx.makePhoneCall({
       phoneNumber: phone,
     })
+  },
+  navigatorTo(e){
+    let {url} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url,
+    })
   }
 })

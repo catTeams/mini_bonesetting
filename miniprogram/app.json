@@ -6,8 +6,7 @@
     "pages/introduce/introduce",
     "pages/search/search",
     "pages/detail/detail",
-    "pages/order/order",
-    "pages/success/success"
+    "pages/order/order"
   ],
   "window": {
     "backgroundColor": "#fff",

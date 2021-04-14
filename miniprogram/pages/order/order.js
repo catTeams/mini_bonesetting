@@ -132,7 +132,7 @@ Page({
       }
     }
     wx.redirectTo({
-      url: '../success/success',
+      url: '../index/index',
     })
   }
 })
