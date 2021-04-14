@@ -15,6 +15,16 @@ Page({
     num: 1,
     num_text: 1,
     sum: 0,
+
+    openDate:false
+  },
+  chooseDate(e){
+    console.log(e,666);
+  },
+  closeDate(){
+    this.setData({
+      openDate: false
+    })
   },
   onLoad(options) {
     let {_id} = options
@@ -60,13 +70,14 @@ Page({
   //获取时间日期 
   changeDateTime(e) {
     this.setData({
-      dateTime: e.detail.value
+      // dateTime: e.detail.value,
+      openDate: true
     })
-    var startT = dateTimePicker.formatPickerDateTime(this.data.dateTimeArray, this.data.dateTime)
-    this.setData({
-      startT: startT,
-      startTime: startT,
-    })
+    // var startT = dateTimePicker.formatPickerDateTime(this.data.dateTimeArray, this.data.dateTime)
+    // this.setData({
+    //   startT: startT,
+    //   startTime: startT,
+    // })
   },
   changeNum(e) {
     if (e.detail.value <= 1) {

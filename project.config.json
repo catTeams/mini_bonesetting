@@ -63,6 +63,12 @@
         {
           "name": "pages/mine/mine",
           "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
           "scene": null
         }
       ]

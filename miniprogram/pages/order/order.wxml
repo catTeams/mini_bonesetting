@@ -1,5 +1,10 @@
 <!--miniprogram/pages/order/order.wxml-->
 <view>
+
+  <action-sheet hidden="{{!openDate}}" bindchange="closeDate">
+    <chooseDate />
+    <action-sheet-cancel class="closeDate">取消</action-sheet-cancel>
+  </action-sheet>
   <view class="top">
     <view class="img">
       <image src="{{result.projectImgs[0]}}">
@@ -21,9 +26,10 @@
     <mp-cells>
       <mp-cell link value="预约时间" style="font-size: 26rpx">
         <view slot="footer">
-          <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
-            <view>{{startTime}}</view>
-          </picker>
+          <!-- <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
+            <view>{{startTime}}</view> 
+          </picker>-->
+          <view bindtap="changeDateTime">请选择</view>
         </view>
       </mp-cell>
       <mp-cell value="数量" style="font-size: 26rpx">
@@ -47,7 +53,8 @@
   </view>
   <view class="info">
     <view style="font-size: 30rpx">买家留言</view>
-    <textarea placeholder="请输入留言" style="width: 100%;line-height: 20rpx;line-height-step: 20rpx;" bindinput="changeDesc"></textarea>
+    <textarea placeholder="请输入留言" style="width: 100%;line-height: 20rpx;line-height-step: 20rpx;"
+      bindinput="changeDesc"></textarea>
   </view>
   <view class="footer">
     <view>￥{{sum}}</view>
