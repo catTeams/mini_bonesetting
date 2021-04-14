@@ -6,7 +6,9 @@
     "pages/introduce/introduce",
     "pages/search/search",
     "pages/detail/detail",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/addAndEdit/addAndEdit",
+    "pages/classification/classification"
   ],
   "window": {
     "backgroundColor": "#fff",

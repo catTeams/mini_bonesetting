@@ -1,0 +1,76 @@
+/* miniprogram/pages/classification/classification.wxss */
+.manage{
+  width: 750rpx;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+.manage .manage-item{
+  display: flex;
+  /* flex-wrap: wrap; */
+  border: 2rpx solid #ccc;
+  width: 48%;
+  height: 100rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.manage .manage-item .tit{
+  font-size: 24rpx;
+}
+.manage .manage-item .handle text{
+  /* display: inline-block; */
+  padding: 15rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+
+}
+.manage .manage-item .handle .del{
+  background-color: #F36039;
+}
+.manage .manage-item .handle .edit{
+  background-color: #4378FB;
+}
+.manage .icon{
+  justify-content:space-around;
+}
+
+.addItem {
+  display: flex;
+  padding: 20rpx;
+  justify-content: space-between;
+}
+.addItem input {
+  border: 1px solid #ccc;
+  flex-grow: 1;
+  height: 60rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  border-radius: 20rpx;
+  background: #fff;
+}
+.addItem text {
+  width: 120rpx;
+  border-radius: 6rpx;
+  background: #3172e8;
+  text-align: center;
+  color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-right: 20rpx;
+}
+.addItem text.cancel{
+  border: 2rpx solid #3172e8;
+  box-sizing: border-box;
+  background: #fff;
+  color: #3172e8;
+  line-height: 59rpx;
+}

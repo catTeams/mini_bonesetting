@@ -1,11 +1,27 @@
 // miniprogram/pages/detail/detail.js
+const Api = require('../../utils/api').default;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    indicatorDots: true,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+  },
+  onLoad(options){
+    let {_id} = options;
+    this.getInfo(_id)
+  },
+  async getInfo(_id){
+    let res = await Api._findProjectDetail(_id)
+    console.log(res);
+    this.setData({
+      result: res.data
+    })
   },
   navigatorTo(){
     let {

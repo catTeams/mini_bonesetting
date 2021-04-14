@@ -1,4 +1,6 @@
 // miniprogram/pages/appointment/appointment.js
+const Api = require('../../utils/api').default;
+
 Page({
 
   /**
@@ -7,40 +9,19 @@ Page({
   data: {
     currentTab: 0,
     currentIndex: 0,
-    list: [{
-        imgSrc: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg',
-        title: '快乐套餐',
-        arr: '推动血运、健健康康',
-        price: 250,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg',
-        title: '和科技和',
-        arr: '平平安安，开心快乐，美丽动人',
-        price: 100,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg',
-        title: '沐足养生',
-        arr: '推动血运、健健康康',
-        price: 250,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg',
-        title: '和科技和',
-        arr: '平平安安，开心快乐，美丽动人',
-        price: 100,
-        hasSum: 2,
-      }
-    ]
+    list: [],
+    menusId: '',
+    pagesize: 10,
+    page: 1,
+  },
+  onLoad() {
+    this.getList()
   },
   navigatorTo(e) {
     let {
       type,
-      url
+      url,
+      _id
     } = e.currentTarget.dataset;
     if (type) {
       let {
@@ -64,7 +45,7 @@ Page({
       }
     }
     wx.navigateTo({
-      url,
+      url: url + '?_id=' + _id,
     })
   },
   // 滚动切换标签样式
@@ -86,5 +67,58 @@ Page({
         currentIndex: e.detail.current
       })
     }
+  },
+  // 获取列表
+  async getList() {
+    let menusId = this.data.menusId;
+    let {
+      _openid
+    } = wx.getStorageSync('userInfo');
+    // if (!this.data.isMore) {
+    //   return
+    // }
+    wx.showLoading({
+      title: '正在请求...',
+    })
+    let pagesize = this.data.pagesize;
+    let skip = (this.data.page - 1) * pagesize;
+    let data = {
+      status: 1,
+      _openid
+    }
+    if (menusId) {
+      data.menusId = menusId
+    }
+    let res = await Api._getProjectList(data, pagesize, skip, 'addTime', 'desc');
+    wx.hideLoading()
+    // if (res.data.length == 0) {
+    //   if (this.data.foodList.length == 0) {
+    //     this.setData({
+    //       isNone: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       isMore: false
+    //     })
+    //   }
+
+    //   wx.showToast({
+    //     title: '没有更多了',
+    //     icon: 'none'
+    //   })
+    // }
+    // 根据openid找到对应用户
+    let list = res.data.map(async item => {
+      return await Api._hasUsers({
+        _openid: item._openid
+      });
+    })
+    list = await Promise.all(list);
+    list.forEach((item, idx) => {
+      res.data[idx].userInfo = item.data[0]
+    })
+    this.setData({
+      list: this.data.list.concat(res.data)
+    })
   },
 })

@@ -153,10 +153,10 @@
     </view>
   </view>
   <view class="getPhone get" catchtap='getPhone' data-phone="15899692927">
-    <icon class="iconfont icon-dianhua" style="font-size:35rpx"></icon>
+    <icon class="iconfont icon-dianhua" style="font-size:35rpx;color: #999;"></icon>
   </view>
   <view class="getWx get" catchtap="openWx">
-    <icon class="iconfont icon-weixin" style="font-size:35rpx"></icon>
+    <icon class="iconfont icon-weixin" style="font-size:35rpx;color: #999;"></icon>
   </view>
   <mp-dialog title="获取微信" show="{{showWx}}" bindbuttontap="closeWx" buttons="{{oneButton}}">
     <view>

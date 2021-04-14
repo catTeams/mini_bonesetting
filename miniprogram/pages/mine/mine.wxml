@@ -15,10 +15,14 @@
 	</block>
 	<view class="box">
 		<view class="smallBox">
-			<mp-cells>
-				<mp-cell link value="所有订单" style="font-size: 26rpx">
+			<mp-cells wx:if="{{isAdmit}}">
+				<mp-cell link value="分类列表" style="font-size: 26rpx" bindtap="navigatorTo" data-url="../classification/classification">
+				</mp-cell>
+				<mp-cell link value="添加项目" style="font-size: 26rpx" bindtap="navigatorTo" data-url="../addAndEdit/addAndEdit">
 				</mp-cell>
 			</mp-cells>
+		</view>
+		<view class="smallBox">
 			<view class="firstFlex">
 				<view wx:for="{{firstFlexContent}}" wx:key="index">
 					<image src="{{item.src}}"></image>
@@ -26,26 +30,20 @@
 				</view>
 			</view>
 		</view>
-		<view class="smallBox">
+	
+		<view class="smallBox" wx:for="{{orderList}}" wx:key="index">
 			<mp-cells>
-				<mp-cell link value="最新消息" style="font-size: 26rpx" footer="说明文字">
+				<mp-cell value="广东省深圳市龙华区江围路宝志国商业楼I5号" style="font-size: 26rpx">
 				</mp-cell>
-				<mp-cell link value="我的订阅" style="font-size: 26rpx">
+				<mp-cell value="15899692927" style="font-size: 26rpx">
 				</mp-cell>
-				<mp-cell link url="../index" style="font-size: 26rpx" value="我的表单">
+				<mp-cell style="font-size: 26rpx" value="{{item.projectName}}" footer="{{item.time}}">
 				</mp-cell>
-			</mp-cells>
-		</view>
-		<view class="smallBox">
-			<mp-cells>
-				<mp-cell link value="xxx省xxx市xxx县xxx路xxx号" style="font-size: 26rpx" footer="说明文字">
-					<!-- <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image> -->
-				</mp-cell>
-				<mp-cell link value="1300000000" style="font-size: 26rpx">
-				</mp-cell>
-				<mp-cell link value="2021-04-10 14:00:00" style="font-size: 26rpx">
-				</mp-cell>
-				<mp-cell link url="../index" style="font-size: 26rpx" value="正骨">
+				<mp-cell style="font-size: 26rpx">
+					<view slot="footer">
+						<view wx:if="{{isAdmit}}" style="color:green">结束订单</view>
+						<view wx:else style="color:red">取消预约</view>
+					</view>
 				</mp-cell>
 			</mp-cells>
 		</view>

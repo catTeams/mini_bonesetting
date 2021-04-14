@@ -4,7 +4,6 @@ import {
   openid
 } from '../../utils/config.js'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -23,10 +22,11 @@ Page({
         src: 'cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/cancel.png',
         title: '已取消'
       }
-    ]
+    ],
+    isAdmit: false,
   },
   onLoad() {
-    this._isLogin()
+    this._isLogin();
   },
   //判断是否登录状态
   _isLogin() {
@@ -37,6 +37,15 @@ Page({
         isLogin: true,
         userInfo
       })
+      this._getOrder()
+      let {
+        _openid
+      } = userInfo;
+      if (_openid == openid) {
+        this.setData({
+          isAdmit: true
+        })
+      }
     } else {
       this.setData({
         isLogin: false
@@ -67,7 +76,6 @@ Page({
                   console.log(res);
                   // return
                   let _openid = res.result.openid;
-
                   // 定义一个变量接收需要存储的个人信息
                   let data = {
                     _openid,
@@ -104,7 +112,7 @@ Page({
                     _openid
                   })
 
-                  // this._isLogin()
+                  this._isLogin()
                 }
               })
             }
@@ -115,6 +123,61 @@ Page({
     return
 
     // console.log(e);
+
+  },
+  navigatorTo(e) {
+    let {
+      url
+    } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url,
+    })
+  },
+  // 获取订单
+  async _getOrder() {
+    // 通过当前openid获取
+    let _openid = this.data.userInfo._openid;
+    let orderList = []
+    if(_openid == openid){
+      orderList = await Api._getOrders({
+        status: 1
+      })
+    }else{
+      orderList = await Api._getOrders({
+        _openid,
+        status: 1
+      })
+    }
+    console.log(orderList);
+    await Promise.all(
+      orderList.data.map(async item => {
+        let res = await Api._findProjectDetail(
+          item.projectId)
+        console.log(res);
+        item.projectName = res.data.projectName
+      })
+    )
+    this.setData({
+      orderList: orderList.data
+    })
+    console.log(orderList);
+
+    return
+    // 向数据中添加userInfo属性，便于跳转详情页获取个人信息
+    orderList.forEach((item, idx) => {
+      orderList[idx] = item.data[0];
+    })
+    this.setData({
+      result: orderList
+    })
+    return
+    // 向数据中添加userInfo属性，便于跳转详情页获取个人信息
+    orderList.forEach((item, idx) => {
+      orderList[idx] = item.data[0];
+    })
+    this.setData({
+      likeFood: orderList
+    })
 
   },
 })

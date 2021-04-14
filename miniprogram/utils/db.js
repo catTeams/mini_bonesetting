@@ -8,7 +8,7 @@ const _add = (collectionName,data={}) => {
 };
 // 条件查找数据
 const _find = (collectionName,where={}) => {
-  console.log(collectionName,123);
+  console.log(collectionName,where,123);
   return db.collection(collectionName).where(where).get()
 }
 // 条件id查找数据

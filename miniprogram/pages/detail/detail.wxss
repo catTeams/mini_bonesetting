@@ -60,7 +60,61 @@
   padding: 30rpx;
   color: #515151;
 }
+.message {
+  margin: 40rpx;
+}
+.message .tit {
+  margin-bottom: 20rpx;
+}
+.message .tit text {
+  color: rgb(184, 180, 180);
+  font-size: 24rpx;
+}
+.message .send {
+  display: flex;
+}
+.message .send input {
+  border: 2rpx solid #ccc;
+font-size: 24rpx;
+width: 500rpx;
+height: 60rpx;
+line-height: 60rpx;
+padding-left: 30rpx;
+z-index: 0;
 
+}
+.message .list {
+  margin: 40rpx 0;
+}
+.message .list .list-item {
+  /* border-bottom: 2rpx solid #ccc; */
+  margin: 20rpx 0;
+}
+.message .list .list-item .tit {
+  font-size: 30rpx;
+}
+.message .list .list-item .tit image {
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: bottom;
+}
+.message .list .list-item .tit text {
+  font-size: 24rpx;
+  color: #ccc;
+  float: right;
+}
+.message .list .list-item .tit text.del {
+  margin-left: 10rpx;
+}
+.message .list .list-item .txt{
+   font-size: 26rpx;
+   text-indent: 2em;
+}
+.message .send button {
+  width: 120rpx;
+  font-size: 28rpx;
+  background-color: transparent;
+}
 .footer {
   padding: 15rpx;
   position: fixed;

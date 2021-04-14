@@ -10,20 +10,20 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h">
         <block wx:if="{{list.length > 0}}">
-          <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo" data-url="../detail/detail">
-            <image src="{{item.imgSrc}}"></image>
+          <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo"  data-_id="{{item._id}}" data-url="../detail/detail">
+            <image src="{{item.projectImgs[0]}}"></image>
             <view class="flexBox">
               <view class="left">
                 <view>
-                  <text class="title">{{item.title}}</text>
+                  <text class="title">{{item.projectName}}</text>
                 </view>
-                <view class="label">{{item.arr}}</view>
+                <view class="label">{{item.projectLabel}}</view>
                 <view>
                   <text class="price">￥{{item.price}}</text>
-                  <text class="hasSum">(已预约:{{item.hasSum}})</text>
+                  <text class="hasSum">(已预约:{{item.order}})</text>
                 </view>
               </view>
-              <view class="right" catchtap="navigatorTo" data-url="../order/order" data-type="order">立即预约</view>
+              <view class="right" catchtap="navigatorTo" data-url="../order/order" data-type="order" data-_id="{{item._id}}">立即预约</view>
             </view>
             <view class="line"></view>
           </view>

@@ -2,14 +2,14 @@
 <view>
   <view class="top">
     <view class="img">
-      <image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg">
+      <image src="{{result.projectImgs[0]}}">
       </image>
     </view>
     <view class="flex1">
-      <view>受刺激啊</view>
-      <view style="color: #bbb">健健康康、平平安俺</view>
+      <view>{{result.projectName}}</view>
+      <view style="color: #bbb">{{result.projectLabel}}</view>
       <view class="leftFlex">
-        <text>￥144.00</text>
+        <text>￥{{result.price}}</text>
         <view>
           <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/dian.png"></image>
           <text>到店支付</text>
@@ -40,7 +40,7 @@
       <view><text>*</text>姓名</view>
       <input type="text" bindinput="changeName" />
     </view>
-    <view>
+    <view style="margin-top: 15rpx;">
       <view><text>*</text>手机号</view>
       <input type="number" bindinput="changePhone" />
     </view>

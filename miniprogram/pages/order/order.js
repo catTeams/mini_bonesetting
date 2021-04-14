@@ -1,5 +1,7 @@
 // miniprogram/pages/order/order.js
 let dateTimePicker = require('../../utils/dataTimePicker')
+const Api = require('../../utils/api').default;
+
 Page({
 
   /**
@@ -12,10 +14,19 @@ Page({
     startTime: '请选择',
     num: 1,
     num_text: 1,
-    sum: 140,
+    sum: 0,
   },
-  onLoad() {
+  onLoad(options) {
+    let {_id} = options
     this.getNowTime()
+    this.getInfo(_id)
+  },
+  async getInfo(_id){
+    let res = await Api._findProjectDetail(_id)
+    console.log(res);
+    this.setData({
+      result: res.data
+    })
   },
   // 获取当前时间
   getNowTime: function (e) {
@@ -75,14 +86,15 @@ Page({
     this.data.num_text--
     this.setData({
       num_text: this.data.num_text,
-      sum: this.data.num_text * 140
+      sum: this.data.num_text * this.data.result.price
     })
   },
   num_jia() {
     this.data.num_text++;
     this.setData({
       num_text: this.data.num_text,
-      sum: this.data.num_text * 140
+      num: this.data.num_text,
+      sum: this.data.num_text * this.data.result.price
     })
   },
   changeName(e) {
@@ -100,7 +112,7 @@ Page({
       desc: e.detail.value
     })
   },
-  submit() {
+  async submit() {
     if (this.data.startTime == '请选择') {
       wx.showToast({
         title: '请选择预约时间',
@@ -131,8 +143,13 @@ Page({
       return
       }
     }
-    wx.redirectTo({
-      url: '../index/index',
-    })
+    let projectId = this.data.result._id;
+    await Api._addOrders({
+      projectId,
+      num: this.data.num,
+      time: this.data.startTime,
+      sum: this.data.sum,
+      status: 1
+    });
   }
 })
