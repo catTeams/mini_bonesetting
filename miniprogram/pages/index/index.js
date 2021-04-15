@@ -4,7 +4,7 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 500,
-    background: ['cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg'],
+    background: ['../../static/images/headImg.png', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg'],
     //设置标记点
     markers: [{
       iconPath: "",

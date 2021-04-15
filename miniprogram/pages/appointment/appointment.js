@@ -13,9 +13,11 @@ Page({
     menusId: '',
     pagesize: 10,
     page: 1,
+    menusList: [{typeName: '全部',_id:''}]
   },
   onLoad() {
-    this.getList()
+    this.getList();
+    this.getMenusList()
   },
   navigatorTo(e) {
     let {
@@ -50,27 +52,57 @@ Page({
   },
   // 滚动切换标签样式
   switchTab: function (e) {
+    let item = this.data.menusList[e.detail.current]
+    if(item._id){
+      this.setData({
+        menusId: item._id
+      })
+    }
     this.setData({
       // currentTab: e.detail.current,
-      currentIndex: e.detail.current
+      currentIndex: e.detail.current,
+      list: []
     });
+    this.getList()
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
 
     var cur = e.target.dataset.current;
+    let {item} = e.currentTarget.dataset
+    console.log(item);
+    if(item._id){
+      this.setData({
+        menusId: item._id
+      })
+    }
     if (this.data.currentTaB == cur) {
       return false;
     } else {
       this.setData({
         currentTab: cur,
-        currentIndex: e.detail.current
+        currentIndex: e.detail.current,
+        list: []
+
       })
     }
+    this.getList()
+  },
+  // 渲染分类数据
+  async getMenusList() {
+    let res = await Api._findClassItem({status:1});
+    console.log(res);
+    let menusList = this.data.menusList.concat(res.data)
+    this.setData({
+      menusList
+    })
+
+
   },
   // 获取列表
   async getList() {
     let menusId = this.data.menusId;
+    console.log(menusId);
     let {
       _openid
     } = wx.getStorageSync('userInfo');
@@ -84,7 +116,6 @@ Page({
     let skip = (this.data.page - 1) * pagesize;
     let data = {
       status: 1,
-      _openid
     }
     if (menusId) {
       data.menusId = menusId

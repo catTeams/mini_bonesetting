@@ -10,20 +10,11 @@ Page({
   data: {
     isLogin: false,
     userInfo: {},
-    firstFlexContent: [{
-        src: 'cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/playing.png',
-        title: '进行中'
-      },
-      {
-        src: 'cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/confirm.png',
-        title: '已完成'
-      },
-      {
-        src: 'cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/cancel.png',
-        title: '已取消'
-      }
-    ],
     isAdmit: false,
+    status: 1,
+    showModal: false,
+    followFlag: true,
+    followSubmitCheck: true,
   },
   onLoad() {
     this._isLogin();
@@ -87,7 +78,7 @@ Page({
                   // return
                   // 查询是否有该用户
                   console.log(_openid);
-
+                  // return
                   let hasUsersRes = await Api._hasUsers({
                     _openid
                   })
@@ -138,46 +129,185 @@ Page({
     // 通过当前openid获取
     let _openid = this.data.userInfo._openid;
     let orderList = []
-    if(_openid == openid){
-      orderList = await Api._getOrders({
+    let orderPlaying = [];
+    let orderConfirm = [];
+    let orderCancel = [];
+    if (_openid == openid) {
+      orderPlaying = await Api._getOrders({
         status: 1
       })
-    }else{
-      orderList = await Api._getOrders({
+      await Promise.all(
+        orderPlaying.data.map(async item => {
+          let res = await Api._findProjectDetail(
+            item.projectId)
+          console.log(res);
+          item.projectName = res.data.projectName
+        })
+      )
+      orderConfirm = await Api._getOrders({
+        status: 2
+      })
+      await Promise.all(
+        orderConfirm.data.map(async item => {
+          let res = await Api._findProjectDetail(
+            item.projectId)
+          console.log(res);
+          item.projectName = res.data.projectName
+        })
+      )
+      orderCancel = await Api._getOrders({
+        status: 3
+      })
+      await Promise.all(
+        orderCancel.data.map(async item => {
+          let res = await Api._findProjectDetail(
+            item.projectId)
+          console.log(res);
+          item.projectName = res.data.projectName
+        })
+      )
+    } else {
+      orderPlaying = await Api._getOrders({
         _openid,
         status: 1
       })
-    }
-    console.log(orderList);
-    await Promise.all(
-      orderList.data.map(async item => {
+      orderPlaying.data.map(async item => {
         let res = await Api._findProjectDetail(
           item.projectId)
         console.log(res);
         item.projectName = res.data.projectName
       })
-    )
+      orderConfirm = await Api._getOrders({
+        _openid,
+        status: 2
+      })
+      orderConfirm.data.map(async item => {
+        let res = await Api._findProjectDetail(
+          item.projectId)
+        console.log(res);
+        item.projectName = res.data.projectName
+      })
+      orderCancel = await Api._getOrders({
+        _openid,
+        status: 3
+      })
+      orderCancel.data.map(async item => {
+        let res = await Api._findProjectDetail(
+          item.projectId)
+        console.log(res);
+        item.projectName = res.data.projectName
+      })
+    }
+
     this.setData({
-      orderList: orderList.data
+      orderList: orderPlaying.data,
+      orderPlaying: orderPlaying.data,
+      orderConfirm: orderConfirm.data,
+      orderCancel: orderCancel.data,
+    })
+
+
+  },
+  async changeStatus(e) {
+    let {
+      status
+    } = e.currentTarget.dataset;
+    this.setData({
+      status
+    });
+    let {
+      orderList,
+      orderPlaying,
+      orderConfirm,
+      orderCancel
+    } = this.data
+    if (this.data.status == 1) {
+      orderList = orderPlaying
+    } else if (this.data.status == 2) {
+      orderList = orderConfirm
+    } else if (this.data.status == 3) {
+      orderList = orderCancel
+    }
+
+    this.setData({
+      orderList: orderList
     })
     console.log(orderList);
+    // this._getOrder()
+  },
+  async changeOrder(e) {
+    let {
+      _id,
+      status
+    } = e.currentTarget.dataset;
+    status = parseInt(status)
+    if (status == 3) {
+      this.setData({
+        orderStatus: status,
+        orderId: _id
+      })
+      return
+    }
+    await Api._editOrders(_id, {
+      status
+    })
+    this._getOrder()
+  },
+  // 赋值跟进内容
+  changeText(e) {
+    this.setData({
+      followText: e.detail.value,
+    });
+    console.log(this.data.followText)
+    this.data.logDescription = this.data.followText
+  },
+  openHide() {
+    this.setData({
+      showModal: true,
+    });
+  },
+  // 隐藏跟进弹框
+  hideModal: function () {
+    this.setData({
+      showModal: false,
+    });
+  },
+  // 确认添加跟进
+  onConfirm: async function () {
+    console.log(this.data.followFlag)
+    if (!this.data.followFlag) return
+    this.setData({
+      followFlag: false
+    })
+    if (!this.data.followText) {
+      wx.showToast({
+        title: '取消原因不能为空！',
+        icon: 'none'
+      })
+      this.setData({
+        followFlag: true
+      })
+      return
+    }
+    if (this.data.followSubmitCheck) {
+      this.setData({
+        followSubmitCheck: false
+      });
+      if (this.data.logDescription) {
+        await Api._editOrders(this.data.orderId, {
+          status: this.data.status,
+          logDescription: this.data.logDescription
+        })
+        this._getOrder()
+        this.setData({
+          followSubmitCheck: true,
+          followFlag: true,
+          followText: "",
+          showModal: false
+        })
+      }
+    }
 
-    return
-    // 向数据中添加userInfo属性，便于跳转详情页获取个人信息
-    orderList.forEach((item, idx) => {
-      orderList[idx] = item.data[0];
-    })
-    this.setData({
-      result: orderList
-    })
-    return
-    // 向数据中添加userInfo属性，便于跳转详情页获取个人信息
-    orderList.forEach((item, idx) => {
-      orderList[idx] = item.data[0];
-    })
-    this.setData({
-      likeFood: orderList
-    })
 
   },
 })

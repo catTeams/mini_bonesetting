@@ -119,6 +119,6 @@
   position: relative;
   left: 0;
   top: 0;
-  color: #fff;
+  color: #9e9090;
   background-color: #343434;
 }

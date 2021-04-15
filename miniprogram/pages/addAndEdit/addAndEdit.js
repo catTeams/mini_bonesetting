@@ -24,7 +24,7 @@ Page({
     }
   },
   // 获取菜单
-   onLoad(){
+   onShow(){
     this.getMenus()
   },
   async getMenus(){

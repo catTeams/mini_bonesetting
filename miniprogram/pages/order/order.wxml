@@ -2,8 +2,14 @@
 <view>
 
   <action-sheet hidden="{{!openDate}}" bindchange="closeDate">
-    <chooseDate />
-    <action-sheet-cancel class="closeDate">取消</action-sheet-cancel>
+    <chooseDate bind:dateSelectAction="dateSelectAction" />
+    <view style="display: flex;justify-content: space-around;">
+      <action-sheet-item class="flex1" bindtap="closeDateOk">确定</action-sheet-item>
+      <action-sheet-item class="flex1" bindtap="closeDate">取消</action-sheet-item>
+    </view>
+    <!-- <action-sheet-cancel class="closeDate">
+      <view>取消</view>
+    </action-sheet-cancel> -->
   </action-sheet>
   <view class="top">
     <view class="img">
@@ -16,7 +22,7 @@
       <view class="leftFlex">
         <text>￥{{result.price}}</text>
         <view>
-          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/dian.png"></image>
+          <image src="../../static/images/dian.png"></image>
           <text>到店支付</text>
         </view>
       </view>
@@ -29,7 +35,7 @@
           <!-- <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" range="{{dateTimeArray}}">
             <view>{{startTime}}</view> 
           </picker>-->
-          <view bindtap="changeDateTime">请选择</view>
+          <view bindtap="changeDateTime">{{startTime}}</view>
         </view>
       </mp-cell>
       <mp-cell value="数量" style="font-size: 26rpx">
@@ -57,7 +63,7 @@
       bindinput="changeDesc"></textarea>
   </view>
   <view class="footer">
-    <view>￥{{sum}}</view>
+    <view style="font-size:40rpx">￥{{sum}}</view>
     <view class="right" bindtap="submit">提交订单</view>
   </view>
 </view>

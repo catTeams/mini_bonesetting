@@ -16,7 +16,7 @@ Component({
     cur_month: '',
     today: '',
     toyear: '',
-    tomonth: ''
+    tomonth: '',
   },
   attached() {
     // 第二种方式通过组件的生命周期函数执行代码
@@ -28,10 +28,18 @@ Component({
   methods: {
     dateSelectAction: function (e) {
       var cur_day = e.currentTarget.dataset.idx;
+      var item = e.currentTarget.dataset.item;
+      console.log(this.data.cur_year,this.data.cur_month,item,this.data.toyear,this.data.tomonth,this.data.today);
       this.setData({
         todayIndex: cur_day,
       })
       console.log(`点击的日期:${this.data.cur_year}年${this.data.cur_month}月${cur_day + 1}日`);
+      let data = {
+        year: this.data.cur_year,
+        month: this.data.cur_month,
+        day: cur_day + 1
+      }
+      this.triggerEvent('dateSelectAction', data)     //通过triggerEvent将参数传给父组件
     },
     setNowDate: function () {
       const date = new Date();
@@ -107,7 +115,7 @@ Component({
 
         this.setData({
           cur_year: newYear,
-          cur_month: newMonth
+          cur_month: newMonth,
         })
 
       } else {

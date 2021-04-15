@@ -103,6 +103,10 @@ const _addOrders = (data={})=>{
 const _getOrders = (data={})=>{
   return db._find(conllections.miniOrders,data)
 }
+// 修改
+const _editOrders = (id,data={})=>{
+  return db._updateId(conllections.miniOrders,id,data)
+}
 // --------订单列表---------
 
 export default {
@@ -118,5 +122,6 @@ export default {
   _getProjectList,
   _findProjectDetail,
   _addOrders,
-  _getOrders
+  _getOrders,
+  _editOrders
 }

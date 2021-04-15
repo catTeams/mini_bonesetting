@@ -21,7 +21,7 @@
     <view class="wayTitkle"><text>-</text>推拿项目<text>-</text></view>
     <view class="con_main">
       <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
-        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <image src="../../static/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
           <view class="con_main_listDetail">改善人体各个系统的功能</view>
@@ -38,7 +38,7 @@
         </view>
       </view>
       <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
-        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <image src="../../static/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
           <view class="con_main_listDetail">改善人体各个系统的功能</view>
@@ -55,7 +55,7 @@
         </view>
       </view>
       <view class="con_main_list" bindtap="navigatorTo" data-url="../detail/detail">
-        <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+        <image src="../../static/images/headImg.png"></image>
         <view class="txt">
           <view class="con_main_listTit">针灸养生</view>
           <view class="con_main_listDetail">改善人体各个系统的功能</view>
@@ -78,7 +78,7 @@
     <view class="service_main">
       <view class="service_main_list">
         <view class="service_info">
-          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <image src="../../static/images/headImg.png"></image>
           <view class="service_name">
             <text>黄医生</text>
             <text>15899692927</text>
@@ -90,7 +90,7 @@
       </view>
       <view class="service_main_list">
         <view class="service_info">
-          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <image src="../../static/images/headImg.png"></image>
           <view class="service_name">
             <text>黄医生</text>
             <text>xdscdcd</text>
@@ -102,7 +102,7 @@
       </view>
       <view class="service_main_list">
         <view class="service_info">
-          <image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"></image>
+          <image src="../../static/images/headImg.png"></image>
           <view class="service_name">
             <text>黄医生</text>
             <text>xdscdcd</text>
@@ -160,7 +160,7 @@
   </view>
   <mp-dialog title="获取微信" show="{{showWx}}" bindbuttontap="closeWx" buttons="{{oneButton}}">
     <view>
-      <image class="wxImg" src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/20210413175951.jpg"></image>
+      <image class="wxImg" src="../../static/images/20210413175951.jpg"></image>
     </view>
     <view bindtap="copyText" data-text="budai_bb">点击复制微信号：budai_bb</view>
   </mp-dialog>

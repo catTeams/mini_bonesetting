@@ -10,7 +10,8 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        env: 'ceshi-3gcxvjpd2a3df7c5',
+        // env: 'mini-sql',
+        env: 'mini-sql-5ge52aah258b3e12',
         traceUser: true,
       })
     }

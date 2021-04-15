@@ -23,10 +23,11 @@ Page({
       result: res.data
     })
   },
-  navigatorTo(){
+  navigatorTo(e){
     let {
       _openid
     } = wx.getStorageSync('userInfo');
+    let {_id} = e.currentTarget.dataset
     console.log(_openid);
     if (!_openid) {
       wx.showModal({
@@ -44,7 +45,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: '../order/order',
+      url: '../order/order?_id='+ _id,
     })
   },
   onShareAppMessage: function () {

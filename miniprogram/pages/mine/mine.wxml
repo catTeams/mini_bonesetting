@@ -2,7 +2,7 @@
 	<view class="bg"></view>
 	<block wx:if="{{!isLogin}}">
 		<view class="logined" bindtap="_getInfo">
-			<image src="cloud://ceshi-3gcxvjpd2a3df7c5.6365-ceshi-3gcxvjpd2a3df7c5-1303120065/images/headImg.png"
+			<image src="../../static/images/headImg.png"
 				class="userImg" />
 			<view style="color: white">请点击登录</view>
 		</view>
@@ -24,9 +24,20 @@
 		</view>
 		<view class="smallBox">
 			<view class="firstFlex">
-				<view wx:for="{{firstFlexContent}}" wx:key="index">
-					<image src="{{item.src}}"></image>
-					<text>{{item.title}}</text>
+				<view bindtap="changeStatus" data-status="1">
+					<image src="../../static/images/waitpay.png"></image>
+					<text>进行中</text>
+					<view class="listSum" wx:if="{{orderPlaying.length > 0}}">{{orderPlaying.length}}</view>
+				</view>
+				<view bindtap="changeStatus" data-status="2">
+					<image src="../../static/images/confirm.png"></image>
+					<text>已完成</text>
+					<view class="listSum" wx:if="{{orderConfirm.length > 0}}">{{orderConfirm.length}}</view>
+				</view>
+				<view bindtap="changeStatus" data-status="3">
+					<image src="../../static/images/cancel.png" bindtap="openHide"></image>
+					<text>已取消</text>
+					<view class="listSum" wx:if="{{orderCancel.length > 0}}">{{orderCancel.length}}</view>
 				</view>
 			</view>
 		</view>
@@ -39,13 +50,26 @@
 				</mp-cell>
 				<mp-cell style="font-size: 26rpx" value="{{item.projectName}}" footer="{{item.time}}">
 				</mp-cell>
-				<mp-cell style="font-size: 26rpx">
+				<mp-cell style="font-size: 26rpx" wx:if="{{status==1}}">
 					<view slot="footer">
-						<view wx:if="{{isAdmit}}" style="color:green">结束订单</view>
-						<view wx:else style="color:red">取消预约</view>
+						<view wx:if="{{isAdmit}}" style="color:green" bindtap="changeOrder" data-_id="{{item._id}}" data-status="2">结束订单</view>
+						<view style="color:red" bindtap="changeOrder" data-_id="{{item._id}}" data-status="3">取消预约</view>
 					</view>
 				</mp-cell>
 			</mp-cells>
 		</view>
 	</view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">说明取消原因</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <textarea name="" id="" cols="30" rows="10" style="height: 340rpx;padding-left: 15rpx;    width: 100%;" focus="1"
+        bindinput="changeText"></textarea>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-confirm btnBackground1" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
 </view>

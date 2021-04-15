@@ -21,11 +21,7 @@ Page({
   chooseDate(e){
     console.log(e,666);
   },
-  closeDate(){
-    this.setData({
-      openDate: false
-    })
-  },
+
   onLoad(options) {
     let {_id} = options
     this.getNowTime()
@@ -35,7 +31,8 @@ Page({
     let res = await Api._findProjectDetail(_id)
     console.log(res);
     this.setData({
-      result: res.data
+      result: res.data,
+      sum: res.data.price
     })
   },
   // 获取当前时间
@@ -60,7 +57,8 @@ Page({
     var obj = dateTimePicker.dateTimePicker(Y - 10, Y + 10, start);
     this.setData({
       dateTime: obj.dateTime,
-      dateTimeArray: obj.dateTimeArray
+      dateTimeArray: obj.dateTimeArray,
+      chooseTime: Y + '-' + M + '-' + D
     });
     var startT = dateTimePicker.formatPickerDateTime(this.data.dateTimeArray, this.data.dateTime)
     this.setData({
@@ -123,6 +121,27 @@ Page({
       desc: e.detail.value
     })
   },
+  dateSelectAction(e){
+    let {year,month,day} = e.detail;
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+    this.setData({
+      chooseTime: year + '-' + month + '-' + day,
+      // openDate: false
+    })
+    
+  },
+  closeDate(){
+    this.setData({
+      openDate: false
+    })
+  },
+  closeDateOk(){
+    this.setData({
+      openDate: false,
+      startTime: this.data.chooseTime
+    })
+  },
   async submit() {
     if (this.data.startTime == '请选择') {
       wx.showToast({
@@ -155,12 +174,13 @@ Page({
       }
     }
     let projectId = this.data.result._id;
-    await Api._addOrders({
+    let res = await Api._addOrders({
       projectId,
       num: this.data.num,
       time: this.data.startTime,
       sum: this.data.sum,
       status: 1
     });
+    console.log(res);
   }
 })

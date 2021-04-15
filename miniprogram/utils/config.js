@@ -5,7 +5,7 @@ let conllections = {
   miniProjectList: 'mini-projectList', //分类列表
   miniOrders: 'mini-orders'
 }
-let openid = "okG-M5bf-2J1rUGLkNtZGJxedR-c";
+let openid = "omB3Z5Nrdnom8moTU8hxeGe0fNk8";
 export{
   apiurl,
   conllections,

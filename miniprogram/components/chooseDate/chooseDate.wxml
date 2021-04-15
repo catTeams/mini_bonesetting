@@ -4,11 +4,11 @@
   <view class="canlendarView">
     <view class="canlendarTopView">
       <view class="leftBgView" bindtap="handleCalendar" data-handle="prev">
-        <view class="leftView">《</view>
+        <view class="leftView">{{'<'}}</view>
       </view>
-      <view class="centerView" bindtap="openDate">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+      <view class="centerView">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
       <view class="rightBgView" bindtap="handleCalendar" data-handle="next">
-        <view class="rightView">》</view>
+        <view class="rightView">{{'>'}}</view>
       </view>
     </view>
     <view class="weekBgView">
@@ -17,9 +17,29 @@
     <view class="dateBgView">
       <view wx:if="{{hasEmptyGrid}}" class="dateEmptyView" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
       </view>
-      <view class="dateView" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="dateSelectAction">
-        <view class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}">
-          {{item == today && cur_month == tomonth && cur_year == toyear ? '今' : item}}</view>
+        <view class="dateView" wx:for="{{days}}" wx:key="{{index}}">
+          <veiw wx:if="{{item == today && cur_month == tomonth && cur_year == toyear}}" data-idx="{{index}}" bindtap="dateSelectAction" data-item="{{item}}"  class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}" >
+            {{'今'}}
+          </veiw>
+          <veiw wx:elif="{{cur_year < toyear}}" class="datesView" style="background:#f3f3f3;border-radius:50%">
+            {{item}}
+          </veiw>
+          <veiw wx:elif="{{cur_year > toyear}}" data-idx="{{index}}" bindtap="dateSelectAction" data-item="{{item}}" class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}" >
+            {{item}}
+          </veiw>
+          <veiw wx:elif="{{item < today && cur_month == tomonth}}" class="datesView" style="background:#f3f3f3;border-radius:50%">
+            {{item}}
+          </veiw>
+          <veiw wx:elif="{{item > today && cur_month == tomonth}}" data-idx="{{index}}" bindtap="dateSelectAction" data-item="{{item}}" class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}" >
+            {{item}}
+          </veiw>
+          <veiw wx:elif="{{cur_month < tomonth}}" class="datesView" style="background:#f3f3f3;border-radius:50%">
+            {{item}}
+
+          </veiw>
+          <veiw wx:elif="{{cur_month > tomonth}}" data-idx="{{index}}" bindtap="dateSelectAction" data-item="{{item}}" class="datesView {{index == todayIndex ? 'dateSelectView' : ''}}" >
+            {{item}}
+          </veiw>
       </view>
     </view>
   </view>

@@ -47,6 +47,6 @@
       <icon class="iconfont icon-dianhua"></icon>
       <text>电话</text>
     </view>
-    <view class="right" bindtap="navigatorTo">立即预约</view>
+    <view class="right" bindtap="navigatorTo" data-_id="{{result._id}}">立即预约</view>
   </view>
 </view>
