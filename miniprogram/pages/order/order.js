@@ -179,8 +179,19 @@ Page({
       num: this.data.num,
       time: this.data.startTime,
       sum: this.data.sum,
-      status: 1
+      status: 1,
+      clientName: this.data.name,
+      phone: this.data.phone,
+      desc: this.data.desc
     });
+    wx.showToast({
+      title: '预约成功',
+    })
+    setTimeout(()=>{
+      wx.switchTab({
+        url: '../mine/mine',
+      })
+    },500)
     console.log(res);
   }
 })

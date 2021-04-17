@@ -1,41 +1,42 @@
 // miniprogram/pages/search/search.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-        imgSrc: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg',
-        title: '快乐套餐',
-        arr: '推动血运、健健康康',
-        price: 250,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg',
-        title: '和科技和',
-        arr: '平平安安，开心快乐，美丽动人',
-        price: 100,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1342227882,3906352906&fm=26&gp=0.jpg',
-        title: '沐足养生',
-        arr: '推动血运、健健康康',
-        price: 250,
-        hasSum: 2,
-      },
-      {
-        imgSrc: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2500729992,1972626005&fm=26&gp=0.jpg',
-        title: '和科技和',
-        arr: '平平安安，开心快乐，美丽动人',
-        price: 100,
-        hasSum: 2,
-      }
-    ]
+    list: [],
+    pagesize: 10
   },
-
+  getKey(e) {
+    this.setData({
+      keywords: e.detail.value
+    })
+    this.getList()
+  },
+  getSearch(e){
+    let keywords = e.currentTarget.dataset.key;
+    this.setData({
+      keywords
+    })
+    this.getList()
+  },
+  async getList() {
+    let pagesize = this.data.pagesize;
+    let skip = (this.data.page - 1) * pagesize;
+    console.log(db);
+    let res = await db.collection('mini-projectList').where({
+      projectName: db.RegExp({
+        regexp: this.data.keywords,
+        options: 'i'
+      })
+    }).limit(pagesize).skip(skip).orderBy('addTime', 'desc').get()
+    console.log(res);
+    this.setData({
+      list: res.data
+    })
+  },
   navigatorTo(e) {
     let {
       type,
@@ -71,7 +72,7 @@ Page({
       })
     }
     if (!type) {
-      
+
       wx.navigateTo({
         url,
       })

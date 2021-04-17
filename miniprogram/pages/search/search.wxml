@@ -3,22 +3,22 @@
   <view class="header-search-bar">
     <label class="header-search-bar__label" bindtap="showInput">
       <icon class="header-icon-search" type="search" size="14"></icon>
-      <input type="text" placeholder="搜索" auto-focus />
+      <input type="text" placeholder="搜索" auto-focus bindblur="getKey" />
     </label>
     <view bindtap="navigatorTo" data-type="-1">取消</view>
   </view>
   <view class="listData">
     <view class="item-ans" wx:for="{{list}}" wx:key="*this" bindtap="navigatorTo" data-url="../detail/detail">
-      <image src="{{item.imgSrc}}"></image>
+      <image src="{{item.projectImgs[0]}}"></image>
       <view class="flexBox">
         <view class="left">
           <view>
-            <text class="title">{{item.title}}</text>
+            <text class="title">{{item.projectName}}</text>
           </view>
-          <view class="label">{{item.arr}}</view>
+          <view class="label">{{item.projectLabel}}</view>
           <view>
             <text class="price">￥{{item.price}}</text>
-            <text class="hasSum">(已预约:{{item.hasSum}})</text>
+            <text class="hasSum">(已预约:{{item.order}})</text>
           </view>
         </view>
         <view class="right" catchtap="navigatorTo" data-url="../order/order" data-type="order">立即预约</view>
@@ -29,11 +29,11 @@
   <view class="searchBottom">
     <view class="searchTitle">推荐搜索</view>
     <view class="searchFlex">
-      <view>骨折</view>
-      <view>脱臼</view>
-      <view>脊椎</view>
-      <view>胸椎</view>
-      <view>骶椎</view>
+      <view bindtap="getSearch" data-key="骨折">骨折</view>
+      <view bindtap="getSearch" data-key="脱臼">脱臼</view>
+      <view bindtap="getSearch" data-key="脊椎">脊椎</view>
+      <view bindtap="getSearch" data-key="胸椎">胸椎</view>
+      <view bindtap="getSearch" data-key="骶椎">骶椎</view>
     </view>
   </view>
 </view>

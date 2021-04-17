@@ -2,8 +2,7 @@
 	<view class="bg"></view>
 	<block wx:if="{{!isLogin}}">
 		<view class="logined" bindtap="_getInfo">
-			<image src="../../static/images/headImg.png"
-				class="userImg" />
+			<image src="../../static/images/headImg.png" class="userImg" />
 			<view style="color: white">请点击登录</view>
 		</view>
 	</block>
@@ -16,7 +15,8 @@
 	<view class="box">
 		<view class="smallBox">
 			<mp-cells wx:if="{{isAdmit}}">
-				<mp-cell link value="分类列表" style="font-size: 26rpx" bindtap="navigatorTo" data-url="../classification/classification">
+				<mp-cell link value="分类列表" style="font-size: 26rpx" bindtap="navigatorTo"
+					data-url="../classification/classification">
 				</mp-cell>
 				<mp-cell link value="添加项目" style="font-size: 26rpx" bindtap="navigatorTo" data-url="../addAndEdit/addAndEdit">
 				</mp-cell>
@@ -35,41 +35,76 @@
 					<view class="listSum" wx:if="{{orderConfirm.length > 0}}">{{orderConfirm.length}}</view>
 				</view>
 				<view bindtap="changeStatus" data-status="3">
-					<image src="../../static/images/cancel.png" bindtap="openHide"></image>
+					<image src="../../static/images/cancel.png"></image>
 					<text>已取消</text>
 					<view class="listSum" wx:if="{{orderCancel.length > 0}}">{{orderCancel.length}}</view>
 				</view>
 			</view>
 		</view>
-	
-		<view class="smallBox" wx:for="{{orderList}}" wx:key="index">
-			<mp-cells>
-				<mp-cell value="广东省深圳市龙华区江围路宝志国商业楼I5号" style="font-size: 26rpx">
-				</mp-cell>
-				<mp-cell value="15899692927" style="font-size: 26rpx">
-				</mp-cell>
-				<mp-cell style="font-size: 26rpx" value="{{item.projectName}}" footer="{{item.time}}">
-				</mp-cell>
-				<mp-cell style="font-size: 26rpx" wx:if="{{status==1}}">
-					<view slot="footer">
-						<view wx:if="{{isAdmit}}" style="color:green" bindtap="changeOrder" data-_id="{{item._id}}" data-status="2">结束订单</view>
-						<view style="color:red" bindtap="changeOrder" data-_id="{{item._id}}" data-status="3">取消预约</view>
-					</view>
-				</mp-cell>
-			</mp-cells>
-		</view>
+		<block wx:if="{{isAdmit}}">
+			<view class="smallBox" wx:for="{{orderList}}" wx:key="index">
+				<mp-cells>
+					<mp-cell value="{{item.clientName}}" style="font-size: 26rpx">
+					</mp-cell>
+					<mp-cell value="{{item.phone}}" style="font-size: 26rpx">
+						<view catchtap='getPhone' data-phone="{{item.phone}}" slot="footer">
+							<icon class="iconfont icon-dianhua1"></icon>
+						</view>
+					</mp-cell>
+					<mp-cell style="font-size: 26rpx" value="{{item.projectName}}" footer="{{item.time}}">
+					</mp-cell>
+					<mp-cell wx:if="{{item.logDescription}}" style="font-size: 26rpx" value="取消原因"
+						footer="{{item.logDescription}}">
+					</mp-cell>
+					<mp-cell wx:if="{{item.clientLogDescription}}" style="font-size: 26rpx" value="取消原因"
+						footer="{{item.clientLogDescription}}"></mp-cell>
+					<mp-cell style="font-size: 26rpx" wx:if="{{status==1}}">
+						<view slot="footer" style="display:flex">
+							<view style="color:red" bindtap="changeOrder" data-_id="{{item._id}}" data-status="3">取消预约</view>
+							<view style="color: green;margin-left: 20rpx;" bindtap="changeOrder" data-_id="{{item._id}}"
+								data-status="2">结束订单</view>
+						</view>
+					</mp-cell>
+				</mp-cells>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="smallBox" wx:for="{{orderList}}" wx:key="index">
+				<mp-cells>
+					<mp-cell value="广东省深圳市龙华区江围路宝志国商业楼I5号" style="font-size: 26rpx">
+					</mp-cell>
+					<mp-cell value="15899692927" style="font-size: 26rpx">
+						<view catchtap='getPhone' data-phone="13613009313" slot="footer">
+							<icon class="iconfont icon-dianhua1"></icon>
+						</view>
+					</mp-cell>
+					<mp-cell style="font-size: 26rpx" value="{{item.projectName}}" footer="{{item.time}}">
+					</mp-cell>
+					<mp-cell wx:if="{{item.logDescription}}" style="font-size: 26rpx" value="取消原因"
+						footer="{{item.logDescription}}">
+					</mp-cell>
+					<mp-cell wx:if="{{item.clientLogDescription}}" style="font-size: 26rpx" value="取消原因"
+						footer="{{item.clientLogDescription}}"></mp-cell>
+					<mp-cell style="font-size: 26rpx" wx:if="{{status==1}}">
+						<view slot="footer">
+							<view style="color:red" bindtap="changeOrder" data-_id="{{item._id}}" data-status="3">取消预约</view>
+						</view>
+					</mp-cell>
+				</mp-cells>
+			</view>
+		</block>
 	</view>
 </view>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}">
-  <view class="modal-title">说明取消原因</view>
-  <view class="modal-content">
-    <view class="modal-input">
-      <textarea name="" id="" cols="30" rows="10" style="height: 340rpx;padding-left: 15rpx;    width: 100%;" focus="1"
-        bindinput="changeText"></textarea>
-    </view>
-  </view>
-  <view class="modal-footer">
-    <view class="btn-confirm btnBackground1" bindtap="onConfirm" data-status="confirm">确定</view>
-  </view>
+	<view class="modal-title">说明取消原因</view>
+	<view class="modal-content">
+		<view class="modal-input">
+			<textarea name="" id="" cols="30" rows="10" style="height: 340rpx;padding-left: 15rpx;    width: 100%;" focus="1"
+				bindinput="changeText"></textarea>
+		</view>
+	</view>
+	<view class="modal-footer">
+		<view class="btn-confirm btnBackground1" bindtap="onConfirm" data-status="confirm">确定</view>
+	</view>
 </view>

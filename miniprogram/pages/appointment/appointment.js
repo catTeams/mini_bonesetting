@@ -13,7 +13,10 @@ Page({
     menusId: '',
     pagesize: 10,
     page: 1,
-    menusList: [{typeName: '全部',_id:''}]
+    menusList: [{
+      typeName: '全部',
+      _id: ''
+    }]
   },
   onLoad() {
     this.getList();
@@ -52,45 +55,50 @@ Page({
   },
   // 滚动切换标签样式
   switchTab: function (e) {
+    console.log(e);
     let item = this.data.menusList[e.detail.current]
-    if(item._id){
-      this.setData({
-        menusId: item._id
-      })
-    }
     this.setData({
       // currentTab: e.detail.current,
       currentIndex: e.detail.current,
-      list: []
+      list: [],
+      menusId: item._id
     });
+    if(e.detail.source == ''){
+      return
+    }
     this.getList()
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
-
+    console.log(123123123123123);
     var cur = e.target.dataset.current;
-    let {item} = e.currentTarget.dataset
+    let {
+      item
+    } = e.currentTarget.dataset
     console.log(item);
-    if(item._id){
-      this.setData({
-        menusId: item._id
-      })
-    }
+    this.setData({
+      menusId: item._id
+    })
     if (this.data.currentTaB == cur) {
       return false;
     } else {
       this.setData({
         currentTab: cur,
         currentIndex: e.detail.current,
-        list: []
 
       })
     }
+    this.setData({
+      list: []
+
+    })
     this.getList()
   },
   // 渲染分类数据
   async getMenusList() {
-    let res = await Api._findClassItem({status:1});
+    let res = await Api._findClassItem({
+      status: 1
+    });
     console.log(res);
     let menusList = this.data.menusList.concat(res.data)
     this.setData({
@@ -121,33 +129,8 @@ Page({
       data.menusId = menusId
     }
     let res = await Api._getProjectList(data, pagesize, skip, 'addTime', 'desc');
+    console.log(res.data);
     wx.hideLoading()
-    // if (res.data.length == 0) {
-    //   if (this.data.foodList.length == 0) {
-    //     this.setData({
-    //       isNone: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       isMore: false
-    //     })
-    //   }
-
-    //   wx.showToast({
-    //     title: '没有更多了',
-    //     icon: 'none'
-    //   })
-    // }
-    // 根据openid找到对应用户
-    let list = res.data.map(async item => {
-      return await Api._hasUsers({
-        _openid: item._openid
-      });
-    })
-    list = await Promise.all(list);
-    list.forEach((item, idx) => {
-      res.data[idx].userInfo = item.data[0]
-    })
     this.setData({
       list: this.data.list.concat(res.data)
     })

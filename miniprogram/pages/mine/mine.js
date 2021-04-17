@@ -244,7 +244,9 @@ Page({
     if (status == 3) {
       this.setData({
         orderStatus: status,
-        orderId: _id
+        orderId: _id,
+        showModal: true,
+
       })
       return
     }
@@ -261,18 +263,13 @@ Page({
     console.log(this.data.followText)
     this.data.logDescription = this.data.followText
   },
-  openHide() {
-    this.setData({
-      showModal: true,
-    });
-  },
   // 隐藏跟进弹框
   hideModal: function () {
     this.setData({
       showModal: false,
     });
   },
-  // 确认添加跟进
+  // 确认
   onConfirm: async function () {
     console.log(this.data.followFlag)
     if (!this.data.followFlag) return
@@ -294,10 +291,17 @@ Page({
         followSubmitCheck: false
       });
       if (this.data.logDescription) {
-        await Api._editOrders(this.data.orderId, {
-          status: this.data.status,
-          logDescription: this.data.logDescription
-        })
+        console.log(this.data.orderId);
+        
+        let data = {
+          status: this.data.orderStatus,
+        }
+        if(this.data.isAdmit){
+          data.logDescription = this.data.logDescription
+        }else{
+          data.clientLogDescription = this.data.logDescription
+        }
+        await Api._editOrders(this.data.orderId, data)
         this._getOrder()
         this.setData({
           followSubmitCheck: true,
@@ -309,5 +313,13 @@ Page({
     }
 
 
+  },
+  getPhone(e) {
+    let {
+      phone
+    } = e.currentTarget.dataset
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
   },
 })

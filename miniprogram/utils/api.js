@@ -123,5 +123,5 @@ export default {
   _findProjectDetail,
   _addOrders,
   _getOrders,
-  _editOrders
+  _editOrders,
 }
